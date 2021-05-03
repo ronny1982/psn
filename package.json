@@ -1,0 +1,13 @@
+{
+  "name": "playstation-avatars",
+  "type": "module",
+  "devDependencies": {
+    "fs-extra": "latest",
+    "node-fetch": "latest",
+    "yargs": "latest"
+  },
+  "scripts": {
+    "update-free": "node ./scripts/free.js",
+    "update-premium": "node ./scripts/premium.js"
+  }
+}
