@@ -11,11 +11,37 @@
                 token = token || await getToken();
                 throw new Error('Not Implemented!');
             }
+
+            async function loadAvatars() {
+                const hook = document.querySelector('#avatars');
+                const response = await fetch('./avatars.json');
+                const categories = await response.json();
+                for(const category of categories) {
+                    const header = document.createElement('h1');
+                    header.innerText = category.title;
+                    header.style.textAlign = 'center';
+                    header.style.background = 'lightgray';
+                    hook.appendChild(header);
+                    for(const avatar of category.avatars) {
+                        const thumb = new Image();
+                        thumb.src = avatar.url;
+                        thumb.style.width = '128px';
+                        thumb.style.height = '128px';
+                        thumb.style.margin = '8px';
+                        hook.appendChild(thumb);
+                    }
+                }
+            }
+
+            window.addEventListener('DOMContentLoaded', event => {
+                loadAvatars();
+            });
         </script>
     </head>
     <body>
         PSN Avatar Selector ...
         <input type="text" id="username" title="Username for the PSN account for which the avatar should be changed." />
         <input type="password" id="password" title="Password for the PSN account for which the avatar should be changed." />
+        <div id="avatars"></div>
     </body>
 </html>
