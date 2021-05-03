@@ -25,9 +25,11 @@
                     for(const avatar of category.avatars) {
                         const thumb = new Image();
                         thumb.src = avatar.url;
+                        thumb.style.margin = '8px';
                         thumb.style.width = '128px';
                         thumb.style.height = '128px';
-                        thumb.style.margin = '8px';
+                        thumb.style.cursor = 'pointer';
+                        thumb.title = 'ID: ' + JSON.stringify(avatar.id);
                         hook.appendChild(thumb);
                     }
                 }
